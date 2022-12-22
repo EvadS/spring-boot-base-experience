@@ -1,4 +1,4 @@
-package com.example.json;
+package com.example.json.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -63,9 +63,7 @@ public class RedisConfig extends CachingConfigurerSupport {
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration
                 .defaultCacheConfig();
         redisCacheConfiguration = redisCacheConfiguration.serializeValuesWith(
-                RedisSerializationContext
-                        .SerializationPair
-                        .fromSerializer(jackson2JsonRedisSerializer)
+                RedisSerializationContext.SerializationPair.fromSerializer(jackson2JsonRedisSerializer)
         ).entryTtl(Duration.ofSeconds(seconds));
 
         return redisCacheConfiguration;

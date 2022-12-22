@@ -1,5 +1,7 @@
 package com.example.json;
 
+import com.example.json.service.RedisService;
+import com.example.json.model.UserRedis;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,7 @@ class RedisServiceTest {
     @Test
     void saveUser() {
         UserRedis japhy = UserRedis.builder().id(3L).name("japhy").age(10L).build();
+
         UserRedis userRedis = redisService.saveUser(japhy);
         Assertions.assertThat(userRedis).isNotNull();
         Assertions.assertThat(userRedis.getId()).isEqualTo(3L);

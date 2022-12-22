@@ -1,5 +1,6 @@
-package com.example.json;
+package com.example.json.service;
 
+import com.example.json.model.UserRedis;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -20,6 +21,8 @@ public class RedisService {
     @Cacheable(value = "user", key = "#userRedis.getId()")
     public UserRedis saveUser(UserRedis userRedis) {
         log.trace("user{} is saved", userRedis);
+
         return userRedis;
     }
+
 }
