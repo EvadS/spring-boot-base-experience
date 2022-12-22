@@ -1,0 +1,54 @@
+
+#scalar JSON
+
+type Vehicle {
+    id: ID!,
+    type: String,
+    modelCode: String,
+    brandName: String,
+    launchDate: String
+}
+
+#-----------------------------------------
+
+
+
+interface Section {
+    brand : String
+    environment : String
+    locale : String
+    content : String
+}
+
+
+type ProductPage implements Section
+{
+    brand : String
+    environment : String
+    locale : String
+    content : String
+}
+
+input PricingOptions {
+    subscriptionType: String
+    customerType: String
+    personalizationType: String
+}
+
+
+type Mutation {
+    createVehicle(type: String!, modelCode: String!, brandName: String, launchDate: String):Vehicle
+}
+type Query {
+    vehicles(count: Int):[Vehicle]
+    vehicle(id: ID):Vehicle
+
+    findProductPageByPartNumber(brand : String!,
+        environment: String!,
+        locale : String,
+        currency : String,
+        partNumber: String!,
+        categoryId: String,
+        contentType: String,
+        pricingOptions : PricingOptions) : ProductPage
+}
