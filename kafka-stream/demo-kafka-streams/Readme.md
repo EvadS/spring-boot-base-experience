@@ -125,4 +125,10 @@ tutorial link
     https://github.com/lydtechconsulting/kafka-streams/tree/v1.3.0
 ```
 
+How to fix:
+```
+MissingSourceTopicException: One or more source topics were missing during rebalance
+```
+
+topics should be created before application run 
 
